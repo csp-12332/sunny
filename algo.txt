@@ -1,0 +1,215 @@
+Ex.1				Symbol Table Generator
+Aim:
+To find the symbol table generator of a source code.
+
+Algorithm:
+Step1: Take the input expression from user.
+Step2: split the input expression at white spaces and generate the tokens.
+Step3: check whether the token is identifier or not.
+Step4: if it is identifier then push the token into symbol table along with the its address
+Step5: else do nothing and print the symbol table. 
+Step6: print the symbol table
+
+Result:
+By this experiment we conclude that symbol table is one of the data structures, which contains the address of the identifiers of the source code.
+
+
+
+Ex.2				Lexical Analysis
+2.a
+Aim:
+To Implement the Lexical Analysis for single statement.
+
+Algorithm:
+Step1: Take the input expression from user.
+Step2: if the input string has white spaces, split the input expression at white spaces and generate the tokens.
+Step3: if the input string has comments, remove the comments and generate the tokens.
+Step4: check whether the token is identifier or operator or constant or key word.
+Step5: Then print the tokens
+
+
+2.b
+Aim:
+To Implement the Lexical Analysis for Source program.
+
+Algorithm:
+Step1: Read the input source code from the file.
+Step2: split the input expression at end of the line
+Step3: then traverse along each source line, then split at white spaces and generate the tokens.
+Step4: if the input string has comments, remove the comments and generate the tokens.
+Step5: check whether the token is identifier or operator or constant or keyword.
+Step6: Then print the tokens.
+
+Result:
+By this experiment we conclude that lexical analyzer generates the tokens of the given source code and eliminates the white spaces.
+
+
+
+3a. RE to e-NFA 
+Aim:
+To convert the regular expression to epsilon Non-deterministic Automata
+
+Algorithm:
+we will use Thompson's construction algorithm for RE -> ε-NFA and subset construction algorithm with ε-closure for ε-NFA -> DFA.
+step 1: Based on the given RE, draw the transition diagram with epsilon transition by using Thompson's construction algorithm.
+step 2: Find the ε-closure of all states of NFA, which is converted from the RE. 
+step 3: Consider the ε-closure of initial state of NFA as the new state and made it as initial state of DFA.
+step 4: Make transition over the new state with the input symbols i.e. extended transition function with ε-closure of the states.
+step 5: If any new state occurs, the again make transition over the new state with the input symbols.
+step 6: Draw the transition table over the new states and check for equivalent states for minimization.
+step 7: Them draw the transition diagram.
+
+3b. e-NFA To DFA
+Aim:
+To convert the epsilon Non-deterministic Finite Automata to Deterministic Finite Automata
+
+Algorithm:
+we will use subset construction algorithm with ε-closure.
+step 1: Find the ε-closure of all states of NFA
+step 2: Consider the ε-closure of initial state of NFA as the new state and made it as initial state of DFA.
+step 3: Make transition over the new state with the input symbols i.e., extended transition function with ε-closure of the states.
+step 4: If any new state occurs, the again make transition over the new state with the input symbols.
+step 5: Draw the transition table over the new states.
+step 6: Them draw the transition diagram.
+
+Result:
+Thus, we learnt how to convert the given RE to DFA by using subset construction algorithm and Thompson's construction algorithm. Initially we will convert the RE to ε-NFA Thompson's construction algorithm, then we will find the find the ε-closure of the all states and we take ε-closure of initial state of NFA as initial state of DFA. And we generated the different subsets from the new states over the given alphabets with ε-closure. Then we finally converted given RE to one-to-many with ε transitions to one-to-many transition, that is DFA.
+
+Ex.4				  Predictive Parsing
+
+Aim:
+To find the Predictive parsing of the given context free grammar
+
+Algorithm:
+Step1: Read the input grammar and input string from the user.
+Step2: if the grammar has left recursion, then eliminate the left recursion.
+Step3: if the grammar has left factoring, then eliminate the left factoring.
+Step4: compute the first function for the grammar after checking the step3.
+Step5: Compute the follow function
+Step6: Then construct the predictive parsing table.
+Step7: parse the string by using the predictive parsing table.
+
+Result:
+By this experiment we conclude that if the predictive parsing table entry contains only one production, then it is LL (1). It is a Top-Down parsing in which it is driven by the left derivation. 
+
+
+Ex.5				  Shift Reduce Parser
+Aim:
+To find the Shift Reduce parsing of the given context free grammar.
+
+Algorithm:
+Step1: Read the input grammar and input string from the user.
+Step2: shift the first of the input into the stack.
+Step3: if the stack has the handle, then reduce the handle from the productions
+Step4: repeat the step 1 and 2.
+Step5: if the stack has the $ start symbol and the input has $, then string is accepted. 
+Step6: else the string is rejected.
+
+
+Result:
+By this experiment we conclude that it is a Bottom-Up parsing in which it is driven by the Right derivation. It has 4 components shift, Reduce, Accept and error. If the stack contains $ along with starting symbol and input contain has $ then the string is accepted by the given CFG.
+
+
+
+Ex.6				 Operator Precedence Parser
+Aim:
+To find the Operator Precedence parsing of the given context free grammar.
+Algorithm:
+Step1: Read the input grammar and input string from the user.
+Step2: shift the first of the input into the stack.
+Step3: check the top of the stack terminal with the current input symbol.
+Step4: if the relation is <= then do shift operation.
+Step5: if the relation is > then do reduce operation for the given handle.
+Step6: repeat the step 2,3 and 4.
+Step7: if the stack has the $ start symbol and the input has $, then string is accepted. 
+Step8: else the string is rejected.
+
+Result:
+By this experiment we conclude that it is a Bottom-Up parsing in which it is driven by the Right derivation. It has 4 components shift, Reduce, Accept and error.  Shift will be performed when the relation is <= and reduce will be performed when the relation is >. If the stack contains $ along with starting symbol and input contain has $ then the string is accepted by the given CFG.
+
+Ex.7				 simple LR Parsing
+Aim:
+To find the SLR parsing of the given context free grammar.
+
+Algorithm:
+Step1: find the augmented grammar.
+Step2:  then compute the lr(0) items for the augmented grammar then make it as a initial state.
+Step3:  calculate the goto function for the new state generated, if the state generated is new, then make it as a new state.
+Step4: repeat the step3 until there is no state generated.
+Step5: then perform the follow function for the given CFG.
+Step6: then fill the slr parsing table.(I.e shift is done based on the goto function and reduce on the follow function).
+Step7: Do the string recognization based on the based on the parsing table.
+
+Result:
+By this experiment we conclude that it is a Bottom-Up parsing in which it is driven by the Right derivation. Initially we will find the lR(0) items and we find the goto function which is useful to find the next state. And we will find follow function to know the when to perform the reduce function.  If the stack contains $ along with starting symbol and input contain has $ then the string is accepted by the given CFG.
+
+Ex.8  	Postfix notation, syntax tree & 3-address code
+
+8.a Postfix notation
+Aim:
+To find the Postfix notation of the given expression.
+
+Algorithm:
+Step1: traverse along the given expression.
+Step2:  If the current character is operand, then push into output.
+Step3:  if the current character is operator, then push into stack.
+Step4: if the upcoming operator has lower priority, then pop the operator of the stack, then enqueue it to output. Then push the current operator into the stack.
+Step5: then repeat the step 4 until completion of the input expression.
+Step6: then pop everything from the stack and enqueue it to the output.
+
+8.b syntax tree
+Aim:
+To find the syntax tree of the given expression.
+
+Algorithm:
+Step1: Read the input expression from the user.
+Step2: traverse along the given expression according to the precedence.
+Step3:  if the present character is operator, make the operator as the parent node.
+Step4:  if the present character is operand, then it as a as leaf node.
+Step5: repeat the step4 and step5 until the completion of the expression.
+Step6: print the syntax tree.
+
+8.c 3-address code
+Aim:
+To find the 3-address code of the given expression.
+
+Algorithm:
+Step1: traverse along the given expression.
+Step2:  if the present character is operator, then make the present, before and after character as a new variable.
+Step3:  repeat the step 2 until the expression has only one variable.
+
+Result:
+By this experiment we conclude that intermediate language is represented by postfix, syntax tree, 3-address code. Postfix is meant by left-right-root. Syntax tree is represented by leaf nodes must be operands and parent node must be operator.  3-address code is generated in a way that each code must contain one operator and by this we know that number of registers used.
+
+
+Ex.9  		Implementation Of 3-address code
+Aim:
+To verify the Implementation Of 3-address code of the given expression.
+
+Algorithm:
+Step1: Read the input expression from the user.
+Step2: traverse along the given expression.
+Step3: compute the Quadruples. (I.e., It is structure with consist of 4 fields namely op, arg1, arg2 and result. op denotes the operator and arg1 and arg2 denotes the two operands and result is used to store the result of the expression.)
+Step4: compute the Triples. (I.e., This representation doesn’t make use of extra temporary variable to represent a single operation instead when a reference to another triple’s value is needed, a pointer to that triple is used. So, it consists of only three fields namely op, arg1 and arg2.)
+Step5: Compute the Indirect triples. (I.e., This representation makes use of pointer to the listing of all references to computations which is made separately and stored. Its similar in utility as compared to quadruple representation but requires less space than it. Temporaries are implicit and easier to rearrange code
+Step6: Then print them
+
+Result:
+By this experiment we conclude that implementation of 3-address code is expressed in Quadruples, Triples, Indirect triples. 
+
+Ex.10  			code Generation
+Aim:
+To generate the code for the given expression.
+
+Algorithm:
+Step1: upload the input file
+Step2: traverse along the expressions based on precedence from the csv file.
+Step3: based on the operator decide the opcode (I.e., MOVE, ADD, SUB etc.).
+Step4: And for the operand, use the variables and minimum one registers. 
+Step5: Then print the code.
+
+Result:
+By this experiment we conclude that target program is in assembly language, in which assembly language consists of opcode and operand. Opcode consists of commands and operands consists of memory location and registers.
+
+
+
